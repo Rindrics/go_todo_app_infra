@@ -20,3 +20,42 @@ spec:
         image: rindrics/gotodo:v0.0.0
         ports:
         - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: gotodo-prd
+  name: gotodo-mysql
+  labels:
+    app: gotodo-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gotodo-mysql
+  template:
+    metadata:
+      labels:
+        app: gotodo-mysql
+    spec:
+      containers:
+      - name: gotodo-mysql
+        image: rindrics/gotodo-database:v1.1.0
+        env:
+          - name: MYSQL_ALLOW_EMPTY_PASSWORD
+            value: "yes"
+          - name: MYSQL_USER
+            value: "todo"
+          - name: MYSQL_PASSWORD
+            value: "todo"
+          - name: MYSQL_DATABASE
+            value: "todo"
+        volumeMounts:
+          - name: gotodo-mysql-config
+            mountPath: /etc/mysql/conf.d:cached
+        ports:
+          - containerPort: 3306
+      volumes:
+        - name: gotodo-mysql-config
+          configMap:
+            name: gotodo-mysql
