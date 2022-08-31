@@ -23,3 +23,15 @@ infra-apply:
 infra-destroy:
 	${INIT}
 	${TFCHDIR}${CLUSTER} destroy ${TFOPTS} -auto-approve
+
+.PHONY: app-apply
+app-apply:
+	kubectl apply -f manifest/namespace.yaml
+	sleep 3
+	find manifest -type f | grep -v namespace | while read -r matched; do\
+	  kubectl apply -f $$matched;\
+	done
+
+.PHONY: app-destroy
+app-destroy:
+	kubectl delete -f manifest
