@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: gotodo-prd
-  name: gotodo-dep
+  name: gotodo
   labels:
     app: gotodo
 spec:
@@ -17,9 +17,24 @@ spec:
     spec:
       containers:
       - name: gotodo
-        image: rindrics/gotodo:v0.0.0
+        image: rindrics/gotodo:v1.0.0
         ports:
-        - containerPort: 80
+        - containerPort: 8080
+        env:
+          - name: TODO_ENV
+            value: "dev"
+          - name: PORT
+            value: "8080"
+          - name: TODO_DB_HOST
+            value: "gotodo-mysql"
+          - name: TODO_DB_PORT
+            value: "33306"
+          - name: TODO_DB_USER
+            value: "todo"
+          - name: TODO_DB_PASSWORD
+            value: "todo"
+          - name: TODO_DB_DATABASE
+            value: "todo"
 ---
 apiVersion: apps/v1
 kind: Deployment

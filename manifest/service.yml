@@ -2,6 +2,19 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: gotodo-prd
+  name: gotodo
+spec:
+  selector:
+    app: gotodo
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: gotodo-prd
   name: gotodo-mysql
 spec:
   selector:
