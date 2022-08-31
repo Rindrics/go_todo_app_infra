@@ -12,6 +12,7 @@ infra-plan:
 infra-apply:
 	${INIT}
 	${TFCHDIR}${CLUSTER} apply ${TFOPTS} -auto-approve
+	kubectl config set-context kind-go-todo-infra --namespace=gotodo-prd
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 	sleep 10
 	kubectl wait --namespace ingress-nginx \
