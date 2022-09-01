@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: gotodo-prd
   name: gotodo
+  labels:
+    component: gotodo-core
 spec:
   selector:
-    app: gotodo
+    component: gotodo-core
   ports:
     - protocol: TCP
       port: 80
@@ -14,11 +15,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: gotodo-prd
   name: gotodo-mysql
+  labels:
+    component: gotodo-database
 spec:
   selector:
-    app: gotodo-mysql
+    component: gotodo-database
   ports:
     - protocol: TCP
       port: 33306

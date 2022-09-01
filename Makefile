@@ -29,10 +29,9 @@ infra-destroy:
 app-apply:
 	kubectl apply -f manifest/namespace.yaml
 	sleep 3
-	find manifest -type f | grep -v namespace | while read -r matched; do\
-	  kubectl apply -f $$matched;\
-	done
+	kustomize build manifest | kubectl apply -f -
 
 .PHONY: app-destroy
 app-destroy:
-	kubectl delete -f manifest
+	kustomize build manifest | kubectl delete -f -
+	kubectl delete -f manifest/namespace.yaml

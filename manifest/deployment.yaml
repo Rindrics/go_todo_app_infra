@@ -1,23 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: gotodo-prd
   name: gotodo
-  labels:
-    app: gotodo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gotodo
+      component: gotodo-core
   template:
     metadata:
       labels:
-        app: gotodo
+        component: gotodo-core
     spec:
       containers:
       - name: gotodo
-        image: rindrics/gotodo-application:v1.1.0
+        image: rindrics/gotodo-application:latest
         ports:
         - containerPort: 8080
         env:
@@ -39,23 +36,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: gotodo-prd
   name: gotodo-mysql
-  labels:
-    app: gotodo-mysql
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gotodo-mysql
+      component: gotodo-database
   template:
     metadata:
       labels:
-        app: gotodo-mysql
+        component: gotodo-database
     spec:
       containers:
       - name: gotodo-mysql
-        image: rindrics/gotodo-database:v1.1.0
+        image: rindrics/gotodo-database:latest
         env:
           - name: MYSQL_ALLOW_EMPTY_PASSWORD
             value: "yes"
