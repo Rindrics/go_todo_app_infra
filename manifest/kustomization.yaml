@@ -1,0 +1,6 @@
+namespace: gotodo-prd
+resources:
+  - deployment.yaml
+  - configmap.yaml
+  - ingress.yaml
+  - service.yaml
