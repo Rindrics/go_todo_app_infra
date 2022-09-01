@@ -4,3 +4,8 @@ resources:
   - configmap.yaml
   - ingress.yaml
   - service.yaml
+images:
+  - name: rindrics/gotodo-application
+    newTag: v1.1.0
+  - name: rindrics/gotodo-database
+    newTag: v1.1.0

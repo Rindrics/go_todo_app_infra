@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: gotodo
-        image: rindrics/gotodo-application:v1.1.0
+        image: rindrics/gotodo-application:latest
         ports:
         - containerPort: 8080
         env:
@@ -53,7 +53,7 @@ spec:
     spec:
       containers:
       - name: gotodo-mysql
-        image: rindrics/gotodo-database:v1.1.0
+        image: rindrics/gotodo-database:latest
         env:
           - name: MYSQL_ALLOW_EMPTY_PASSWORD
             value: "yes"
