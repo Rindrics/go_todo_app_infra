@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gotodo
-        image: rindrics/gotodo:v1.0.0
+        image: rindrics/gotodo-application:v1.1.0
         ports:
         - containerPort: 8080
         env:
