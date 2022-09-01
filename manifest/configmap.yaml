@@ -2,6 +2,8 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: gotodo-mysql
+  labels:
+    component: gotodo-database
 data:
   mysqld.cnf: |
     [mysqld]
