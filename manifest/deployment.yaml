@@ -2,17 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gotodo
-  labels:
-    app: gotodo
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: gotodo
   template:
     metadata:
-      labels:
-        app: gotodo
     spec:
       containers:
       - name: gotodo
@@ -39,17 +32,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gotodo-mysql
-  labels:
-    app: gotodo-mysql
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: gotodo-mysql
   template:
     metadata:
-      labels:
-        app: gotodo-mysql
     spec:
       containers:
       - name: gotodo-mysql

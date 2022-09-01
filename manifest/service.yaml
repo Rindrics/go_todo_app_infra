@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: gotodo
 spec:
-  selector:
-    app: gotodo
   ports:
     - protocol: TCP
       port: 80
@@ -15,8 +13,6 @@ kind: Service
 metadata:
   name: gotodo-mysql
 spec:
-  selector:
-    app: gotodo-mysql
   ports:
     - protocol: TCP
       port: 33306
