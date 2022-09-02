@@ -68,3 +68,30 @@ spec:
         - name: gotodo-mysql-config
           configMap:
             name: gotodo-mysql
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gotodo-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: gotodo-memcache
+  template:
+    metadata:
+      labels:
+        component: gotodo-memcache
+    spec:
+      containers:
+      - name: gotodo-redis
+        image: redis:latest
+        volumeMounts:
+          - name: gotodo-redis-volume
+            mountPath: /data
+        ports:
+          - containerPort: 6379
+      volumes:
+        - name: gotodo-redis-volume
+          persistentVolumeClaim:
+            claimName: gotodo-redis-pvc

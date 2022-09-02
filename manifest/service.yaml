@@ -25,3 +25,17 @@ spec:
     - protocol: TCP
       port: 33306
       targetPort: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gotodo-redis
+  labels:
+    component: gotodo-memcache
+spec:
+  selector:
+    component: gotodo-memcache
+  ports:
+    - protocol: TCP
+      port: 36379
+      targetPort: 6379
