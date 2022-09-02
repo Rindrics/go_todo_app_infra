@@ -62,12 +62,17 @@ spec:
         volumeMounts:
           - name: gotodo-mysql-config
             mountPath: /etc/mysql/conf.d:cached
+          - name: gotodo-mysql-volume
+            mountPath: /var/lib/mysql
         ports:
           - containerPort: 3306
       volumes:
         - name: gotodo-mysql-config
           configMap:
             name: gotodo-mysql
+        - name: gotodo-mysql-volume
+          persistentVolumeClaim:
+            claimName: gotodo-mysql-pvc
 ---
 apiVersion: apps/v1
 kind: Deployment
