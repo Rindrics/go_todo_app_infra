@@ -32,6 +32,10 @@ spec:
             value: "todo"
           - name: TODO_DB_DATABASE
             value: "todo"
+          - name: TODO_REDIS_HOST
+            value: "gotodo-redis"
+          - name: TODO_REDIS_PORT
+            value: "36379"
 ---
 apiVersion: apps/v1
 kind: Deployment
