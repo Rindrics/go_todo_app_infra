@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gotodo-mysql-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 3Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: gotodo-mysql-pvc
+    namespace: gotodo-prd
+  hostPath:
+    path: /var/local-path-provisioner/pvc-025bf8a1-d8bb-4825-98a6-1582ef600123_gotodo-prd_gotodo-mysql-pvc
+    type: DirectoryOrCreate
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: standard
+  volumeMode: Filesystem
