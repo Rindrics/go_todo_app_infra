@@ -16,6 +16,18 @@ nodes:
   - containerPort: 443
     hostPort: ${host_ingress_port_ssh}
     protocol: TCP
+  extraMounts:
+  - hostPath: ./shared-storage
+    containerPath: /var/local-path-provisioner
 - role: worker
+  extraMounts:
+  - hostPath: ./shared-storage
+    containerPath: /var/local-path-provisioner
 - role: worker
+  extraMounts:
+  - hostPath: ./shared-storage
+    containerPath: /var/local-path-provisioner
 - role: worker
+  extraMounts:
+  - hostPath: ./shared-storage
+    containerPath: /var/local-path-provisioner
