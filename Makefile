@@ -28,6 +28,7 @@ infra-destroy:
 .PHONY: app-apply
 app-apply:
 	kubectl apply -f manifest/namespace.yaml
+	kubectl apply -f manifest/storage
 	sleep 3
 	kustomize build manifest | kubectl apply -f -
 
